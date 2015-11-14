@@ -1,1 +1,2 @@
 # debug-bundle
+[![Build Status](https://travis-ci.org/glooby/debug-bundle.svg?branch=0.1)](https://travis-ci.org/glooby/debug-bundle) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/glooby/debug-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/glooby/debug-bundle/?branch=master) [![Coverage Status](https://coveralls.io/repos/glooby/debug-bundle/badge.svg?branch=master&service=github)](https://coveralls.io/github/glooby/debug-bundle?branch=master)
