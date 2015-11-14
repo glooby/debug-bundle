@@ -7,7 +7,6 @@ namespace Glooby\Debug\Dumper;
  */
 class NullDumper implements DumperInterface
 {
-
     /**
      * {@inheritdoc}
      */
