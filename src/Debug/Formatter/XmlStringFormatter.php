@@ -7,7 +7,7 @@ use Glooby\Debug\Exception\FormatterException;
 /**
  * @author Emil Kilhage
  */
-class XmlStringFormatter implements  FormatterInterface
+class XmlStringFormatter implements FormatterInterface
 {
     /**
      * @param string $xml

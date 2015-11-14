@@ -42,7 +42,7 @@ class FormatterFactory implements FormatterFactoryInterface
         } elseif (is_object($output)) {
             foreach (self::$classMap as $className => $formatterClassName) {
                 if (is_a($output, $className)) {
-                    return $this->setup(new $formatterClassName());
+                    return $this->setup($formatterClassName());
                 }
             }
         }

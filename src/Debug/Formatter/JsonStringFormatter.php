@@ -5,7 +5,7 @@ namespace Glooby\Debug\Formatter;
 /**
  * @author Emil Kilhage
  */
-class JsonStringFormatter implements  FormatterInterface
+class JsonStringFormatter implements FormatterInterface
 {
     /**
      * {@inheritdoc}
