@@ -3,6 +3,11 @@
 
 Symfony debugging and log bundle
 
+Installation
+-----------------
+
+    composer require glooby/debug-bundle ~0.1@dev
+
 Running the Tests
 -----------------
 
