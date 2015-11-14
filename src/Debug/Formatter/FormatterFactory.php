@@ -3,6 +3,7 @@
 namespace Glooby\Debug\Formatter;
 
 use Glooby\Api\FlightBundle\Supplier\Base\ResultSet;
+use GuzzleHttp\Exception\ParseException;
 use GuzzleHttp\Message\ResponseInterface;
 
 /**
@@ -28,8 +29,9 @@ class FormatterFactory implements FormatterFactoryInterface
      */
     private static $classMap = [
         \SimpleXMLElement::class => SimpleXMLElementFormatter::class,
+        ResponseInterface::class => Guzzle\ResponseFormatter::class,
+        ParseException::class => Guzzle\ParseExceptionFormatter::class,
         \Exception::class => ExceptionFormatter::class,
-        ResponseInterface::class => GuzzleResponseFormatter::class,
     ];
 
     /**

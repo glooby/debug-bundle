@@ -32,6 +32,10 @@ class ExceptionFormatter implements FormatterInterface
 
         $text = implode("\n\n", $sectionsFormatted)."\n\n";
 
+        if ($exception->getPrevious() instanceof \Exception) {
+            $text .= "Previous:\n\n".$this->format($exception->getPrevious());
+        }
+
         return $text;
     }
 

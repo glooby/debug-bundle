@@ -1,14 +1,18 @@
 <?php
 
-namespace Glooby\Debug\Formatter;
+namespace Glooby\Debug\Formatter\Guzzle;
 
 use Glooby\Debug\Exception\FormatterException;
+use Glooby\Debug\Formatter\ExceptionFormatter;
+use Glooby\Debug\Formatter\FormatterInterface;
+use Glooby\Debug\Formatter\JsonStringFormatter;
+use Glooby\Debug\Formatter\XmlStringFormatter;
 use GuzzleHttp\Message\ResponseInterface;
 
 /**
  * @author Emil Kilhage
  */
-class GuzzleResponseFormatter implements  FormatterInterface
+class ResponseFormatter implements  FormatterInterface
 {
     /**
      * @param ResponseInterface $response
@@ -17,11 +21,13 @@ class GuzzleResponseFormatter implements  FormatterInterface
      */
     public function format($response)
     {
+        $exceptionFormatter = new ExceptionFormatter();
+
         $headers = print_r($response->getHeaders(), true);
 
         $body = $this->formatBody($response);
 
-        return <<<TXT
+        $message = <<<TXT
 Status: {$response->getStatusCode()}
 
 Protocol Version: {$response->getProtocolVersion()}
@@ -37,6 +43,15 @@ Body:
 {$body}
 
 TXT;
+        if ($response instanceof \Exception) {
+            $message = <<<TXT
+{$exceptionFormatter->format($response)}
+
+$message
+TXT;
+
+            return $message;
+        }
     }
 
     /**
