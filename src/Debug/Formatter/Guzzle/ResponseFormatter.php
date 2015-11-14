@@ -3,16 +3,13 @@
 namespace Glooby\Debug\Formatter\Guzzle;
 
 use Glooby\Debug\Exception\FormatterException;
-use Glooby\Debug\Formatter\ExceptionFormatter;
-use Glooby\Debug\Formatter\FormatterInterface;
-use Glooby\Debug\Formatter\JsonStringFormatter;
-use Glooby\Debug\Formatter\XmlStringFormatter;
+use Glooby\Debug\Formatter\FormatterHelper;
 use GuzzleHttp\Message\ResponseInterface;
 
 /**
  * @author Emil Kilhage
  */
-class ResponseFormatter implements  FormatterInterface
+class ResponseFormatter extends AbstractTransferFormatter
 {
     /**
      * @param ResponseInterface $response
@@ -21,53 +18,21 @@ class ResponseFormatter implements  FormatterInterface
      */
     public function format($response)
     {
-        $exceptionFormatter = new ExceptionFormatter();
-
-        $headers = print_r($response->getHeaders(), true);
-
         $body = $this->formatBody($response);
 
-        $message = <<<TXT
-Status: {$response->getStatusCode()}
+        $sections = [
+            'Response Status Code' => $response->getStatusCode(),
+            'Response Protocol Version' => $response->getProtocolVersion(),
+            'Response Reason Phrase' => $response->getReasonPhrase(),
+            'Response Effective Url' => $response->getEffectiveUrl(),
+            'Response Headers' => [],
+            'Response Body' => $body,
+        ];
 
-Protocol Version: {$response->getProtocolVersion()}
+        $sections['Response Headers'] = $this->formatHeaders($response);
 
-Reason Phrase: {$response->getReasonPhrase()}
+        $message = FormatterHelper::formatSections($sections);
 
-Effective Url: {$response->getEffectiveUrl()}
-
-Headers:
-{$headers}
-
-Body:
-{$body}
-
-TXT;
-        if ($response instanceof \Exception) {
-            $message = <<<TXT
-{$exceptionFormatter->format($response)}
-
-$message
-TXT;
-
-            return $message;
-        }
-    }
-
-    /**
-     * @param ResponseInterface $response
-     * @return string
-     */
-    private function formatBody(ResponseInterface $response)
-    {
-        if ($response->getHeader('Content-Type') === 'application/json') {
-            $formatter = new JsonStringFormatter();
-            return $formatter->format($response->getBody());
-        } elseif ($response->getHeader('Content-Type') === 'application/xml') {
-            $formatter = new XmlStringFormatter();
-            return $formatter->format($response->getBody());
-        }
-
-        return $response->getBody();
+        return $message;
     }
 }
