@@ -1,6 +1,6 @@
 {
     "name": "glooby/debug-bundle",
-    "license": "proprietary",
+    "license": "MIT",
     "type": "symfony-bundle",
     "description": "debug-bundle",
     "authors": [
