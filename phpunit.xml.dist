@@ -16,7 +16,7 @@
 >
 
     <testsuites>
-        <testsuite name="Template Bundle Test Suite">
+        <testsuite name="Glooby Debug Bundle Test Suite">
             <directory>../src/*/Tests</directory>
         </testsuite>
     </testsuites>
