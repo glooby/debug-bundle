@@ -2,23 +2,16 @@
 
 namespace Glooby\Debug\Dumper;
 
-use Glooby\Debug\Formatter\FormatterInterface;
-use Glooby\Debug\Writer\WriterInterface;
+use Glooby\Debug\Formatter\FormatterAwareTrait;
+use Glooby\Debug\Writer\WriterAwareTrait;
 
 /**
  * @author Emil Kilhage
  */
 class Dumper implements DumperInterface
 {
-    /**
-     * @var FormatterInterface
-     */
-    private $formatter;
-
-    /**
-     * @var WriterInterface
-     */
-    private $writer;
+    use FormatterAwareTrait;
+    use WriterAwareTrait;
 
     /**
      * @var bool
@@ -31,22 +24,6 @@ class Dumper implements DumperInterface
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    }
-
-    /**
-     * @param FormatterInterface $formatter
-     */
-    public function setFormatter($formatter)
-    {
-        $this->formatter = $formatter;
-    }
-
-    /**
-     * @param WriterInterface $writer
-     */
-    public function setWriter($writer)
-    {
-        $this->writer = $writer;
     }
 
     /**
