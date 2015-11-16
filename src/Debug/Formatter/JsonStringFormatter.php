@@ -24,12 +24,36 @@ class JsonStringFormatter implements FormatterInterface
     }
 
     /**
+     * @param string $string
+     * @return bool
+     */
+    public static function isJsonString($string)
+    {
+        $string = trim($string);
+
+        if (substr($string, 0, 1) === '{' && substr($string, -1, 1) === '}') {
+            try {
+                json_decode($string);
+                return json_last_error() === JSON_ERROR_NONE;
+            } catch (\Exception $e) {
+
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function format($response)
     {
-        $response = \GuzzleHttp\json_decode($response);
+        try {
+            $response = \GuzzleHttp\json_decode($response);
 
-        return json_encode($response, JSON_PRETTY_PRINT);
+            return json_encode($response, JSON_PRETTY_PRINT);
+        } catch (\Exception $e) {
+            return $response;
+        }
     }
 }

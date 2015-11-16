@@ -4,6 +4,7 @@ namespace Glooby\Debug\Formatter\Guzzle;
 
 use Glooby\Debug\Formatter\FormatterInterface;
 use Glooby\Debug\Formatter\JsonStringFormatter;
+use Glooby\Debug\Formatter\StringFactoryFormatter;
 use Glooby\Debug\Formatter\XmlStringFormatter;
 use GuzzleHttp\Message\RequestInterface;
 use GuzzleHttp\Message\ResponseInterface;
@@ -29,7 +30,8 @@ abstract class AbstractMessageFormatter implements  FormatterInterface
             return $formatter->format($message->getBody());
         }
 
-        return $message->getBody();
+        $factory = new StringFactoryFormatter();
+        return $factory->format($message->getBody());
     }
 
     /**

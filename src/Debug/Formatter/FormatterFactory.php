@@ -30,7 +30,7 @@ class FormatterFactory implements FormatterFactoryInterface
     private static $classMap = [
         \SimpleXMLElement::class => SimpleXMLElementFormatter::class,
         TransferException::class => Guzzle\GuzzleExceptionFormatter::class,
-        \GuzzleHttp\Stream\Stream::class => StringFormatter::class,
+        \GuzzleHttp\Stream\Stream::class => StringFactoryFormatter::class,
         ResponseInterface::class => Guzzle\ResponseFormatter::class,
         RequestInterface::class => Guzzle\RequestFormatter::class,
         \Exception::class => ExceptionFormatter::class,
@@ -42,7 +42,7 @@ class FormatterFactory implements FormatterFactoryInterface
     public function factory($output)
     {
         if (is_string($output) || is_int($output)) {
-            return $this->setup(StringFormatter::class);
+            return $this->setup(StringFactoryFormatter::class);
         } elseif (is_object($output)) {
             foreach (self::$classMap as $className => $formatterClassName) {
                 if (is_a($output, $className)) {

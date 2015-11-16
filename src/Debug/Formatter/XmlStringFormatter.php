@@ -32,16 +32,42 @@ class XmlStringFormatter implements FormatterInterface
     }
 
     /**
+     * @param string $string
+     * @return bool
+     */
+    public static function isXmlString($string)
+    {
+        $string = trim($string);
+
+        if (substr($string, 0, 1) === '<' && substr($string, -1, 1) === '>') {
+            try {
+                $dom = new \DOMDocument('1.0');
+                $dom->validateOnParse = true;
+                return $dom->loadXML($string) !== false;
+            } catch (\Exception $e) {
+
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * @param string $xml
      * @return string
      * @throws FormatterException
      */
     public function format($xml)
     {
-        $dom = new \DOMDocument('1.0');
-        $dom->preserveWhiteSpace = false;
-        $dom->formatOutput = true;
-        $dom->loadXML($xml);
-        return $dom->saveXML();
+        try {
+            $dom = new \DOMDocument('1.0');
+            $dom->preserveWhiteSpace = false;
+            $dom->formatOutput = true;
+            $dom->validateOnParse = true;
+            $dom->loadXML($xml);
+            return $dom->saveXML();
+        } catch (\Exception $e) {
+            return $xml;
+        }
     }
 }
