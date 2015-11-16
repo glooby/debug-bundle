@@ -11,36 +11,36 @@ use GuzzleHttp\Message\ResponseInterface;
 /**
  * @author Emil Kilhage
  */
-abstract class AbstractTransferFormatter implements  FormatterInterface
+abstract class AbstractMessageFormatter implements  FormatterInterface
 {
     /**
-     * @param RequestInterface|ResponseInterface $request
+     * @param RequestInterface|ResponseInterface $message
      * @return string
      */
-    protected function formatBody($request)
+    protected function formatBody($message)
     {
-        $header = $request->getHeader('Content-Type');
+        $header = $message->getHeader('Content-Type');
 
         if (JsonStringFormatter::isJsonHeader($header)) {
             $formatter = new JsonStringFormatter();
-            return $formatter->format($request->getBody());
+            return $formatter->format($message->getBody());
         } elseif (XmlStringFormatter::isXmlHeader($header)) {
             $formatter = new XmlStringFormatter();
-            return $formatter->format($request->getBody());
+            return $formatter->format($message->getBody());
         }
 
-        return $request->getBody();
+        return $message->getBody();
     }
 
     /**
-     * @param RequestInterface|ResponseInterface $request
+     * @param RequestInterface|ResponseInterface $message
      * @return string
      */
-    protected function formatHeaders($request)
+    protected function formatHeaders($message)
     {
         $headers = [];
 
-        foreach ($request->getHeaders() as $header => $value) {
+        foreach ($message->getHeaders() as $header => $value) {
             $headers[] = sprintf('%s: %s', $header, implode("\n  : ", $value));
         }
 

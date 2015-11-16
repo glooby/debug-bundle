@@ -9,7 +9,7 @@ use GuzzleHttp\Message\RequestInterface;
 /**
  * @author Emil Kilhage
  */
-class RequestFormatter extends AbstractTransferFormatter
+class RequestFormatter extends AbstractMessageFormatter
 {
     /**
      * @param RequestInterface $request

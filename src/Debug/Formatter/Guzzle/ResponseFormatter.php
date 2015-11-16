@@ -9,7 +9,7 @@ use GuzzleHttp\Message\ResponseInterface;
 /**
  * @author Emil Kilhage
  */
-class ResponseFormatter extends AbstractTransferFormatter
+class ResponseFormatter extends AbstractMessageFormatter
 {
     /**
      * @param ResponseInterface $response
