@@ -19,10 +19,12 @@ abstract class AbstractTransferFormatter implements  FormatterInterface
      */
     protected function formatBody($request)
     {
-        if ($request->getHeader('Content-Type') === 'application/json') {
+        $header = $request->getHeader('Content-Type');
+
+        if (JsonStringFormatter::isJsonHeader($header)) {
             $formatter = new JsonStringFormatter();
             return $formatter->format($request->getBody());
-        } elseif ($request->getHeader('Content-Type') === 'application/xml') {
+        } elseif (XmlStringFormatter::isXmlHeader($header)) {
             $formatter = new XmlStringFormatter();
             return $formatter->format($request->getBody());
         }

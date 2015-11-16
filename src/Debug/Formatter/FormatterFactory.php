@@ -3,6 +3,8 @@
 namespace Glooby\Debug\Formatter;
 
 use GuzzleHttp\Exception\TransferException;
+use GuzzleHttp\Message\RequestInterface;
+use GuzzleHttp\Message\ResponseInterface;
 
 /**
  * @author Emil Kilhage
@@ -28,6 +30,9 @@ class FormatterFactory implements FormatterFactoryInterface
     private static $classMap = [
         \SimpleXMLElement::class => SimpleXMLElementFormatter::class,
         TransferException::class => Guzzle\GuzzleExceptionFormatter::class,
+        \GuzzleHttp\Stream\Stream::class => StringFormatter::class,
+        ResponseInterface::class => Guzzle\ResponseFormatter::class,
+        RequestInterface::class => Guzzle\RequestFormatter::class,
         \Exception::class => ExceptionFormatter::class,
     ];
 

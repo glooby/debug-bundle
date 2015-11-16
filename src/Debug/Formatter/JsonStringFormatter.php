@@ -8,6 +8,22 @@ namespace Glooby\Debug\Formatter;
 class JsonStringFormatter implements FormatterInterface
 {
     /**
+     * @var array
+     */
+    private static $headers = [
+        'application/json',
+    ];
+
+    /**
+     * @param string $header
+     * @return bool
+     */
+    public static function isJsonHeader($header)
+    {
+        return in_array($header, self::$headers, true);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function format($response)
