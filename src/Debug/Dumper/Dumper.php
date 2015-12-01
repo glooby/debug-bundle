@@ -49,6 +49,6 @@ class Dumper implements DumperInterface
      */
     private function createName($id, $ext)
     {
-        return sprintf('%s.%s.%s.%s', $id, date('ymd-His'), posix_getpid(), $ext);
+        return sprintf('%s.%s.%s.%s.%s', $id, date('ymd-His'), posix_getpid(), mt_rand(), $ext);
     }
 }
