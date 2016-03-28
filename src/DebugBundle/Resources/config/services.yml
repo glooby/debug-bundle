@@ -6,14 +6,14 @@ services:
     glooby.debug.dumper:
         class: Glooby\Debug\Dumper\Dumper
         calls:
-            - [setEnabled,   [%glooby.debug.dumper.enable%]]
-            - [setFormatter, [@glooby.debug.formatter]]
-            - [setWriter,    [@glooby.debug.writer]]
+            - [setEnabled,   ['%glooby.debug.dumper.enable%']]
+            - [setFormatter, ['@glooby.debug.formatter']]
+            - [setWriter,    ['@glooby.debug.writer']]
 
     glooby.debug.formatter:
         class: Glooby\Debug\Formatter\Formatter
         calls:
-            - [setFormatterFactory, [@glooby.debug.formatter.factory]]
+            - [setFormatterFactory, ['@glooby.debug.formatter.factory']]
 
     glooby.debug.formatter.factory:
         class: Glooby\Debug\Formatter\FormatterFactory
@@ -21,4 +21,4 @@ services:
     glooby.debug.writer:
         class: Glooby\Debug\Writer\FileWriter
         calls:
-            - [setDirectory, [ %glooby.debug.dumpdir% ]]
+            - [setDirectory, [ '%glooby.debug.dumpdir%' ]]
