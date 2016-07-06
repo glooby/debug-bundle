@@ -49,7 +49,7 @@ class JsonStringFormatter implements FormatterInterface
     public function format($response)
     {
         try {
-            $response = \GuzzleHttp\jsonDecode($response);
+            $response = \GuzzleHttp\Utils::jsonDecode($response);
 
             return json_encode($response, JSON_PRETTY_PRINT);
         } catch (\Exception $e) {
