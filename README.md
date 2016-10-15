@@ -1,5 +1,10 @@
 # debug-bundle
-[![Build Status](https://travis-ci.org/glooby/debug-bundle.svg?branch=0.1)](https://travis-ci.org/glooby/debug-bundle) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/glooby/debug-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/glooby/debug-bundle/?branch=master) [![Coverage Status](https://coveralls.io/repos/glooby/debug-bundle/badge.svg?branch=master&service=github)](https://coveralls.io/github/glooby/debug-bundle?branch=master) [![PHP version](https://badge.fury.io/ph/glooby%2Fdebug-bundle.svg)](https://badge.fury.io/ph/glooby%2Fdebug-bundle)
+[![Build Status](https://travis-ci.org/glooby/debug-bundle.svg?branch=0.1)](https://travis-ci.org/glooby/debug-bundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/glooby/debug-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/glooby/debug-bundle/?branch=master)
+[![Coverage Status](https://coveralls.io/repos/glooby/debug-bundle/badge.svg?branch=master&service=github)](https://coveralls.io/github/glooby/debug-bundle?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/glooby/debug-bundle/version)](https://packagist.org/packages/glooby/debug-bundle)
+[![Total Downloads](https://poser.pugx.org/glooby/debug-bundle/downloads)](https://packagist.org/packages/glooby/debug-bundle)
+[![License](https://poser.pugx.org/glooby/debug-bundle/license)](https://packagist.org/packages/glooby/debug-bundle)
 
 Symfony debugging and log bundle
 
