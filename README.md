@@ -36,6 +36,7 @@ License
 -------
 
 This bundle is released under the MIT license. See the complete license in the
-bundle:
+bundle: [LICENSE.md](https://github.com/glooby/debug-bundle/blob/master/LICENSE.md)
 
-    [LICENSE.md](https://github.com/glooby/debug-bundle/blob/master/LICENSE.md)
+[www.glooby.com](https://www.glooby.com)
+[www.glooby.se](https://www.glooby.se)
