@@ -2,11 +2,14 @@
     "name": "glooby/debug-bundle",
     "license": "MIT",
     "type": "symfony-bundle",
-    "description": "debug-bundle",
+    "description": "Symfony debugging and log bundle",
+    "homepage": "https://www.glooby.se",
+    "keywords": ["symfony", "bundle", "glooby", "debug", "guzzle", "http", "rest", "logging"],
     "authors": [
         {
             "name": "Emil Kilhage",
-            "email": "emil.kilhage@glooby.com"
+            "email": "emil.kilhage@glooby.com",
+            "homepage": "https://www.glooby.se"
         }
     ],
     "autoload": {
